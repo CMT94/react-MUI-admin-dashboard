@@ -193,3 +193,23 @@ export const themeSettings = (mode) => {
     },
   };
 };
+
+// Context for color mode
+export const ColorModeContext = React.createContext({
+  toggleColorMode: () => {},
+});
+
+export const useMode = () => {
+  const [mode, setMode] = React.useState("dark");
+
+  const colorMode = React.useMemo(
+    () => ({
+      toggleColorMode: () =>
+        setMode((prevState) => (prevState === "light" ? "dark" : "light")),
+    }),
+    []
+  );
+  const theme = React.useMemo(() => createTheme(themeSettings(mode)), [mode]);
+
+  return [theme, colorMode];
+};
