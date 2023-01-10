@@ -24,59 +24,79 @@ import { tokens } from "../../theme";
 
 const navItemList = [
   {
-    title: "Dashboard",
-    to: "/",
-    icon: <HomeOutlinedIcon />,
+    type: undefined,
+    list: [
+      {
+        title: "Dashboard",
+        to: "/",
+        icon: <HomeOutlinedIcon />,
+      },
+    ],
   },
   {
-    title: "Manage Team",
-    to: "/team",
-    icon: <PeopleOutlinedIcon />,
+    type: "data",
+    list: [
+      {
+        title: "Manage Team",
+        to: "/team",
+        icon: <PeopleOutlinedIcon />,
+      },
+      {
+        title: "Contacts Information",
+        to: "/contacts",
+        icon: <ContactsOutlinedIcon />,
+      },
+      {
+        title: "Invoices Balances",
+        to: "/invoices",
+        icon: <ReceiptOutlinedIcon />,
+      },
+    ],
   },
   {
-    title: "Contacts Information",
-    to: "/contacts",
-    icon: <ContactsOutlinedIcon />,
+    type: "pages",
+    list: [
+      {
+        title: "Profil Form",
+        to: "/form",
+        icon: <PersonOutlinedIcon />,
+      },
+      {
+        title: "Calendar",
+        to: "/calendar",
+        icon: <CalendarTodayOutlinedIcon />,
+      },
+      {
+        title: "FAQ",
+        to: "/faq",
+        icon: <HelpOutlinedIcon />,
+      },
+    ],
   },
   {
-    title: "Invoices Balances",
-    to: "/invoices",
-    icon: <ReceiptOutlinedIcon />,
-  },
-  {
-    title: "Profil Form",
-    to: "/form",
-    icon: <PersonOutlinedIcon />,
-  },
-  {
-    title: "Calendar",
-    to: "/calendar",
-    icon: <CalendarTodayOutlinedIcon />,
-  },
-  {
-    title: "FAQ",
-    to: "/faq",
-    icon: <HelpOutlinedIcon />,
-  },
-  {
-    title: "Bar Chart",
-    to: "/bar",
-    icon: <BarChartOutlinedIcon />,
-  },
-  {
-    title: "Pie Chart",
-    to: "/pie",
-    icon: <PieChartOutlineOutlinedIcon />,
-  },
-  {
-    title: "Line Chart",
-    to: "/line",
-    icon: <TimelineOutlinedIcon />,
-  },
-  {
-    title: "Geography Chart",
-    to: "/geography",
-    icon: <MapOutlinedIcon />,
+    type: "charts",
+    list: [
+      {
+        title: "Bar Chart",
+        to: "/bar",
+        icon: <BarChartOutlinedIcon />,
+      },
+      {
+        title: "Pie Chart",
+        to: "/pie",
+        icon: <PieChartOutlineOutlinedIcon />,
+      },
+      {
+        title: "Line Chart",
+        to: "/line",
+        icon: <TimelineOutlinedIcon />,
+      },
+      {
+        title: "Geography Chart",
+        to: "/geography",
+        icon: <MapOutlinedIcon />,
+      },
+    ],
   },
 ];
 const Item = ({ title, to, icon, selected, setSelected }) => {
@@ -149,8 +169,8 @@ const SideBar = () => {
               <Box display="flex" justifyContent="center" alignItems="center">
                 <img
                   alt="profile-use"
-                  width="100px"
-                  height="100px"
+                  width="80px"
+                  height="80px"
                   src={"../../assets/user.png"}
                   style={{ cursor: "pointer", borderRadius: "50%" }}
                 />
@@ -158,7 +178,7 @@ const SideBar = () => {
 
               <Box textAlign="center">
                 <Typography
-                  variant="h2"
+                  variant="h3"
                   color={colors.grey[100]}
                   fontWeight="bold"
                   sx={{ m: "10px 0 0 0" }}
@@ -184,14 +204,29 @@ const SideBar = () => {
             }}
           >
             {navItemList.map((navItem, navItemIndex) => (
-              <Item
-                key={navItemIndex}
-                title={navItem.title}
-                to={navItem.to}
-                icon={navItem.icon}
-                selected={selected}
-                setSelected={setSelected}
-              />
+              <React.Fragment>
+                <Typography
+                  key={navItemIndex}
+                  variant="h6"
+                  color={colors.grey[300]}
+                  sx={{ m: "10px 0 5px 20px", textTransform: "capitalize" }}
+                >
+                  {navItem.type}
+                </Typography>
+
+                <React.Fragment>
+                  {navItem.list.map((item, itemIndex) => (
+                    <Item
+                      key={itemIndex}
+                      title={item.title}
+                      to={item.to}
+                      icon={item.icon}
+                      selected={selected}
+                      setSelected={setSelected}
+                    />
+                  ))}
+                </React.Fragment>
+              </React.Fragment>
             ))}
           </Box>
           {/* NAV MENU - END */}
