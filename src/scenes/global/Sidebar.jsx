@@ -104,17 +104,18 @@ const Item = ({ title, to, icon, selected, setSelected }) => {
   const colors = tokens(theme.palette.mode);
 
   return (
-    <MenuItem
-      active={selected === title}
-      style={{
-        color: colors.grey[100],
-      }}
-      onClick={() => setSelected(title)}
-      icon={icon}
-    >
-      <Typography>{title}</Typography>
-      <Link to={to} />
-    </MenuItem>
+    <Link to={to} style={{ textDecoration: "none", color: "inherit" }}>
+      <MenuItem
+        active={selected === title}
+        style={{
+          color: colors.grey[100],
+        }}
+        onClick={() => setSelected(title)}
+        icon={icon}
+      >
+        <Typography>{title}</Typography>
+      </MenuItem>
+    </Link>
   );
 };
 const SideBar = () => {
@@ -133,7 +134,6 @@ const SideBar = () => {
     >
       <ProSidebar
         defaultCollapsed={isCollapsed}
-        collapsed={isCollapsed}
         backgroundColor={`${colors.primary[400]} !important`}
         rootStyles={{
           borderRight: "1px solid transparent",
