@@ -3,7 +3,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import { Sidebar as ProSidebar, Menu, MenuItem } from "react-pro-sidebar";
-// import "react-pro-sidebar/dist/css/styles.css";
 
 import { Box, IconButton, Typography, useTheme } from "@mui/material";
 
@@ -99,6 +98,7 @@ const navItemList = [
     ],
   },
 ];
+
 const Item = ({ title, to, icon, selected, setSelected }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
@@ -204,7 +204,7 @@ const SideBar = () => {
             }}
           >
             {navItemList.map((navItem, navItemIndex) => (
-              <React.Fragment>
+              <React.Fragment key={navItemIndex}>
                 <Typography
                   key={navItemIndex}
                   variant="h6"
