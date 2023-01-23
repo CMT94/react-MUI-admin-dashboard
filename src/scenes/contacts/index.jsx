@@ -50,14 +50,14 @@ const Contacts = () => {
       flex: 1,
     },
     {
-      field: "zipcode",
+      field: "zipCode",
       headerName: "ZipCode",
       flex: 1,
     },
   ];
   return (
     <Box m="20px">
-      <Header title="CONTACT" subtitle="List of contact" />
+      <Header title="CONTACT" subtitle="List of Contacts" />
       <Box
         m="40px 0 0 0"
         height="75vh"

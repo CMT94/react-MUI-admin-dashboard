@@ -2,7 +2,7 @@ import React from "react";
 
 import Header from "../../components/Header";
 
-import { GridToolbar, DataGrid } from "@mui/x-data-grid";
+import { DataGrid } from "@mui/x-data-grid";
 import { Box, Typography, useTheme } from "@mui/material";
 
 import { tokens } from "../../theme";
@@ -36,7 +36,13 @@ const Invoices = () => {
       headerName: "Cost",
       flex: 1,
       renderCell: (params) => (
-        <Typography color={colors.greenAccent[500]}>
+        <Typography
+          color={
+            params.row.cost >= 0
+              ? colors.greenAccent[500]
+              : colors.redAccent[500]
+          }
+        >
           {params.row.cost} €
         </Typography>
       ),
@@ -49,7 +55,7 @@ const Invoices = () => {
   ];
   return (
     <Box m="20px">
-      <Header title="INVOICES" subtitle="List of invoice balances" />
+      <Header title="INVOICES" subtitle="List of Invoice balances" />
       <Box
         m="40px 0 0 0"
         height="75vh"

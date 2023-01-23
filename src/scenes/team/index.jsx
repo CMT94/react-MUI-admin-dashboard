@@ -2,11 +2,11 @@ import React from "react";
 
 import Header from "../../components/Header";
 
-import { Box, Typography, useTheme } from "@mui/material";
+import { Box, Button, Typography, useTheme } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import { tokens } from "../../theme";
 
-import { mockDataTeam } from "../../data/mockData";
+import { useTeamUsers } from "./../../hooks/useUsers";
 
 import {
   AdminPanelSettingsOutlined,
@@ -14,9 +14,12 @@ import {
   SecurityOutlined,
 } from "@mui/icons-material";
 
+import DeleteIcon from "@mui/icons-material/Delete";
+
 const Team = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
+  const [users, manageUsers] = useTeamUsers();
 
   // Columns MUI data schema for DataGrid component
   const columns = [
@@ -73,6 +76,31 @@ const Team = () => {
         );
       },
     },
+    {
+      field: "action",
+      headerName: "Action",
+      sortable: false,
+      renderCell: ({ row: { id } }) => {
+        return (
+          <Box
+            width="100%"
+            m="0 auto"
+            p="5px"
+            display="flex"
+            justifyContent="center"
+            borderRadius="4px"
+          >
+            <Button
+              color="error"
+              variant="contained"
+              onClick={() => manageUsers.removeUser(id)}
+            >
+              <DeleteIcon />
+            </Button>
+          </Box>
+        );
+      },
+    },
   ];
 
   return (
@@ -104,7 +132,7 @@ const Team = () => {
           },
         }}
       >
-        <DataGrid rows={mockDataTeam} columns={columns} />
+        <DataGrid rows={users} columns={columns} />
       </Box>
     </Box>
   );
