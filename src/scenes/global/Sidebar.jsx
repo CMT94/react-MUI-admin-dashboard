@@ -118,6 +118,7 @@ const Item = ({ title, to, icon, selected, setSelected }) => {
     </Link>
   );
 };
+
 const SideBar = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
@@ -186,7 +187,7 @@ const SideBar = () => {
                   John Doe
                 </Typography>
                 <Typography variant="h5" color={colors.greenAccent[500]}>
-                  VP Fancy Admin
+                  Administrator
                 </Typography>
               </Box>
             </Box>
