@@ -2,7 +2,7 @@ import React from "react";
 
 import Header from "../../components/Header";
 
-import { GridToolbar, DataGrid } from "@mui/x-data-grid";
+import { DataGrid } from "@mui/x-data-grid";
 import { Box, Typography, useTheme } from "@mui/material";
 
 import { tokens } from "../../theme";
@@ -55,7 +55,7 @@ const Invoices = () => {
   ];
   return (
     <Box m="20px">
-      <Header title="INVOICES" subtitle="List of invoice balances" />
+      <Header title="INVOICES" subtitle="List of Invoice balances" />
       <Box
         m="40px 0 0 0"
         height="75vh"

@@ -7,6 +7,7 @@ import { DataGrid } from "@mui/x-data-grid";
 import { tokens } from "../../theme";
 
 import { mockDataTeam } from "../../data/mockData";
+import { useTeamUsers } from "./../../hooks/useUsers";
 
 import {
   AdminPanelSettingsOutlined,
@@ -17,6 +18,7 @@ import {
 const Team = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
+  const [users, manageUsers] = useTeamUsers();
 
   // Columns MUI data schema for DataGrid component
   const columns = [
