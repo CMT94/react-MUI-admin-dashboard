@@ -18,7 +18,7 @@ const PopUpAlert = (props) => {
   }, []);
 
   return (
-    <Box sx={{ width: "30%", position: "relative" }}>
+    <Box sx={{ width: "30%" }}>
       <Fade in={open}>
         <Box>
           <Alert

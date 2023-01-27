@@ -18,7 +18,7 @@ import ProfileForm from "./scenes/profile-form";
 // import Pie from "./scenes/pie";
 // import FAQ from "./scenes/faq";
 // import Geography from "./scenes/geography";
-// import Calendar from "./scenes/calendar";
+import Calendar from "./scenes/calendar";
 
 const App = () => {
   const [theme, colorMode] = useMode();
@@ -43,7 +43,7 @@ const App = () => {
                 {/* <Route path={"/line"} element={<Line />} /> */}
                 {/* <Route path={"/faq"} element={<FAQ />} /> */}
                 {/* <Route path={"/geography"} element={<Geography />} /> */}
-                {/* <Route path={"/calendar"} element={<Calendar />} /> */}
+                <Route path={"/calendar"} element={<Calendar />} />
               </Routes>
             </main>
           </div>
