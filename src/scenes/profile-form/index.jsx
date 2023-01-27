@@ -7,6 +7,7 @@ import * as yup from "yup";
 import useMediaQuery from "@mui/material/useMediaQuery";
 
 import Header from "../../components/Header";
+import PopUpAlert from "../../components/PopUpAlert";
 
 const initialValues = {
   firstName: "",
@@ -37,15 +38,42 @@ const userSchema = yup.object().shape({
 const ProfileForm = () => {
   const isNonMobile = useMediaQuery("(min-width: 600px)");
 
-  const handleFormSubmit = (values) => {
+  const [popUpAlert, setPopUpAlert] = React.useState({
+    show: false,
+    severity: "success",
+    title: "Success !",
+    message: "New User successfully created !",
+  });
+
+  const handleShowPopUpAlert = () => {
+    setPopUpAlert((prevState) => ({
+      ...prevState,
+      show: true,
+    }));
+  };
+
+  const handleFormSubmit = (values, resetForm) => {
     console.log(values);
+    resetForm();
+    handleShowPopUpAlert();
   };
 
   return (
     <Box m="20px">
-      <Header title="CREATE USER" subtitle="Create a New User Profile" />
+      <Box display="flex" justifyContent="space-between">
+        <Header title="CREATE USER" subtitle="Create a New User Profile" />
+        {popUpAlert.show && (
+          <PopUpAlert
+            severity={popUpAlert.severity}
+            title={popUpAlert.title}
+            message={popUpAlert.message}
+          />
+        )}
+      </Box>
       <Formik
-        onSubmit={handleFormSubmit}
+        onSubmit={(values, { resetForm }) =>
+          handleFormSubmit(values, resetForm)
+        }
         initialValues={initialValues}
         validationSchema={userSchema}
       >
