@@ -13,8 +13,9 @@ const initialValues = {
   lastName: "",
   email: "",
   contact: "",
-  address1: "",
-  address2: "",
+  address: "",
+  city: "",
+  zipCode: "",
 };
 
 const phoneRegExp =
@@ -28,8 +29,9 @@ const userSchema = yup.object().shape({
     .string()
     .matches(phoneRegExp, "Phone number is not valid")
     .required("Required"),
-  address1: yup.string().required("Required"),
-  address2: yup.string().required("Required"),
+  address: yup.string().required("Required"),
+  city: yup.string().required("Required"),
+  zipCode: yup.string().required("Required"),
 });
 
 const ProfileForm = () => {
@@ -51,6 +53,7 @@ const ProfileForm = () => {
           values,
           errors,
           touched,
+          isValid,
           handleBlur,
           handleChange,
           handleSubmit,
@@ -79,6 +82,94 @@ const ProfileForm = () => {
                 helperText={touched.firstName && errors.firstName}
                 sx={{ gridColumn: "span 2" }}
               />
+              <TextField
+                fullWidth
+                variant="filled"
+                name="lastName"
+                type="text"
+                label="Last Name"
+                onBlur={handleBlur}
+                onChange={handleChange}
+                value={values.lastName}
+                error={!!touched.lastName && !!errors.lastName}
+                helperText={touched.lastName && errors.lastName}
+                sx={{ gridColumn: "span 2" }}
+              />
+              <TextField
+                fullWidth
+                variant="filled"
+                name="email"
+                type="email"
+                label="Email"
+                onBlur={handleBlur}
+                onChange={handleChange}
+                value={values.email}
+                error={!!touched.email && !!errors.email}
+                helperText={touched.email && errors.email}
+                sx={{ gridColumn: "span 4" }}
+              />
+              <TextField
+                fullWidth
+                variant="filled"
+                name="contact"
+                type="text"
+                label="Contact Number"
+                onBlur={handleBlur}
+                onChange={handleChange}
+                value={values.contact}
+                error={!!touched.contact && !!errors.contact}
+                helperText={touched.contact && errors.contact}
+                sx={{ gridColumn: "span 4" }}
+              />
+              <TextField
+                fullWidth
+                variant="filled"
+                name="address"
+                type="text"
+                label="Address"
+                onBlur={handleBlur}
+                onChange={handleChange}
+                value={values.address}
+                error={!!touched.address && !!errors.address}
+                helperText={touched.address && errors.address}
+                sx={{ gridColumn: "span 4" }}
+              />
+              <TextField
+                fullWidth
+                variant="filled"
+                name="city"
+                type="text"
+                label="City"
+                onBlur={handleBlur}
+                onChange={handleChange}
+                value={values.city}
+                error={!!touched.city && !!errors.city}
+                helperText={touched.city && errors.city}
+                sx={{ gridColumn: "span 2" }}
+              />
+              <TextField
+                fullWidth
+                variant="filled"
+                name="zipCode"
+                type="text"
+                label="Zip Code"
+                onBlur={handleBlur}
+                onChange={handleChange}
+                value={values.zipCode}
+                error={!!touched.zipCode && !!errors.zipCode}
+                helperText={touched.zipCode && errors.zipCode}
+                sx={{ gridColumn: "span 2" }}
+              />
+            </Box>
+            <Box display="flex" justifyContent="end" mt="20px">
+              <Button
+                type="submit"
+                color="secondary"
+                variant="contained"
+                disabled={!isValid}
+              >
+                Create New User
+              </Button>
             </Box>
           </form>
         )}
