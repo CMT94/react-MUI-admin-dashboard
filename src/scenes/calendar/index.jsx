@@ -1,5 +1,6 @@
 import React from "react";
 
+import { v4 as uuid } from "uuid";
 import Header from "../../components/Header";
 import { tokens } from "../../theme";
 
@@ -18,6 +19,24 @@ import {
   Typography,
   useTheme,
 } from "@mui/material";
+
+const initEvents = [
+  {
+    id: uuid(),
+    title: "Team Meeting",
+    date: "2023-01-10",
+  },
+  {
+    id: uuid(),
+    title: "All-day event",
+    date: "2023-01-15",
+  },
+  {
+    id: uuid(),
+    title: "Timed event",
+    date: "2023-01-27",
+  },
+];
 
 const Calendar = () => {
   const theme = useTheme();
@@ -77,14 +96,11 @@ const Calendar = () => {
                   primary={event.title}
                   secondary={
                     <Typography>
-                      {
-                        (formatDate(event.start),
-                        {
-                          year: "numeric",
-                          month: "short",
-                          day: "numeric",
-                        })
-                      }
+                      {formatDate(event.start, {
+                        year: "numeric",
+                        month: "short",
+                        day: "numeric",
+                      })}
                     </Typography>
                   }
                 />
@@ -104,9 +120,19 @@ const Calendar = () => {
               listPlugin,
             ]}
             headerToolbar={{
-              left: "prev, next, today",
-              center: "dayGridMonth, timeGridWeek, timeGridDay, listMonth",
+              left: "prev next today",
+              center: "title",
+              right: "dayGridMonth timeGridWeek timeGridDay listMonth",
             }}
+            initialView="dayGridMonth"
+            editable={true}
+            selectable={true}
+            selectMirror={true}
+            dayMaxEvents={true}
+            select={handleDateClick}
+            eventClick={handleEventClick}
+            eventsSet={(events) => setCurrentEvents(events)}
+            initialEvents={initEvents}
           />
         </Box>
         {/* CALENDAR - END */}
