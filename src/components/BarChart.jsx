@@ -1,6 +1,6 @@
 import React from "react";
 
-import { useTheme, Box } from "@mui/material";
+import { useTheme } from "@mui/material";
 
 import { tokens } from "../theme";
 

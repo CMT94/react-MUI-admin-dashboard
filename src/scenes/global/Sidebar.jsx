@@ -21,7 +21,7 @@ import MapOutlinedIcon from "@mui/icons-material/MapOutlined";
 
 import { tokens } from "../../theme";
 
-const navItemList = [
+const navListItems = [
   {
     type: undefined,
     list: [
@@ -204,7 +204,7 @@ const SideBar = () => {
               },
             }}
           >
-            {navItemList.map((navItem, navItemIndex) => (
+            {navListItems.map((navItem, navItemIndex) => (
               <React.Fragment key={navItemIndex}>
                 <Typography
                   key={navItemIndex}
