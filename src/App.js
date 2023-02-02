@@ -17,7 +17,7 @@ import Calendar from "./scenes/calendar";
 import FAQ from "./scenes/faq";
 import Bar from "./scenes/bar";
 import Pie from "./scenes/pie";
-// import Line from "./scenes/line";
+import Line from "./scenes/line";
 // import Geography from "./scenes/geography";
 
 const App = () => {
@@ -42,7 +42,7 @@ const App = () => {
                 <Route path={"/faq"} element={<FAQ />} />
                 <Route path={"/bar"} element={<Bar />} />
                 <Route path={"/pie"} element={<Pie />} />
-                {/* <Route path={"/line"} element={<Line />} /> */}
+                <Route path={"/line"} element={<Line />} />
                 {/* <Route path={"/geography"} element={<Geography />} /> */}
               </Routes>
             </main>

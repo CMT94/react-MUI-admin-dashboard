@@ -42,6 +42,7 @@ const PieChart = ({ isDashboard }) => {
       },
     },
   };
+
   return (
     <ResponsivePie
       data={data}
