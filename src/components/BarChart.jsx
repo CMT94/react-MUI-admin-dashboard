@@ -1,18 +1,54 @@
 import React from "react";
 
-import { useTheme } from "@mui/material";
+import { useTheme, Box } from "@mui/material";
+
 import { tokens } from "../theme";
 
 import { mockBarData as data } from "../data/mockData";
 import { ResponsiveBar } from "@nivo/bar";
 
-const BarChart = () => {
+const BarChart = ({ isDashboard }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
+
+  const customChartTheme = {
+    axis: {
+      domain: {
+        line: {
+          stroke: colors.grey[100],
+        },
+      },
+      legend: {
+        text: {
+          fill: colors.grey[100],
+        },
+      },
+      ticks: {
+        line: {
+          stroke: colors.grey[100],
+          strokeWidth: 1,
+        },
+        text: {
+          fill: colors.grey[100],
+        },
+      },
+    },
+    legends: {
+      text: {
+        fill: colors.grey[100],
+      },
+    },
+    tooltip: {
+      container: {
+        color: colors.grey[500],
+      },
+    },
+  };
 
   return (
     <ResponsiveBar
       data={data}
+      theme={customChartTheme}
       keys={["hot dog", "burger", "sandwich", "kebab", "fries", "donut"]}
       indexBy="country"
       margin={{ top: 50, right: 130, bottom: 50, left: 60 }}
@@ -64,7 +100,7 @@ const BarChart = () => {
         tickSize: 5,
         tickPadding: 5,
         tickRotation: 0,
-        legend: "country",
+        legend: isDashboard ? undefined : "country",
         legendPosition: "middle",
         legendOffset: 32,
       }}
@@ -72,7 +108,7 @@ const BarChart = () => {
         tickSize: 5,
         tickPadding: 5,
         tickRotation: 0,
-        legend: "food",
+        legend: isDashboard ? undefined : "food",
         legendPosition: "middle",
         legendOffset: -40,
       }}
