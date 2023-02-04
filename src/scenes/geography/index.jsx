@@ -7,7 +7,10 @@ import GeoChart from "../../components/GeoChart";
 const Geography = () => {
   return (
     <Box m="20px">
-      <Header />
+      <Header
+        title="GEOGRAPHY CHART"
+        subtitle="A Simple Geography Chart Example"
+      />
       <Box height="75vh">
         <GeoChart />
       </Box>
