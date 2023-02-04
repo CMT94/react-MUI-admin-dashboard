@@ -80,7 +80,7 @@ const GeoChart = ({ isDashboard }) => {
                   {
                     on: "hover",
                     style: {
-                      itemTextColor: "#000000",
+                      itemTextColor: colors.grey[100],
                       itemOpacity: 1,
                     },
                   },
