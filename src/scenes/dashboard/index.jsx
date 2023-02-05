@@ -7,14 +7,13 @@ import { Box, Button, IconButton, Typography, useTheme } from "@mui/material";
 import {
   DownloadOutlined as DownloadOutlinedIcon,
   Email as EmailIcon,
-  PointOfSale as PoitnOfSaleIcon,
+  PointOfSale as PointOfSaleIcon,
   PersonAdd as PersonAddIcon,
   Traffic as TrafficIcon,
 } from "@mui/icons-material";
 
 import Header from "../../components/Header";
 import LineChart from "../../components/LineChart";
-import PieChart from "../../components/PieChart";
 import BarChart from "../../components/BarChart";
 import GeoChart from "../../components/GeoChart";
 import StatBox from "../../components/StatBox";
@@ -48,7 +47,7 @@ const Dashboard = () => {
       <Box
         display="grid"
         gridTemplateColumns="repeat(12, 1fr)"
-        gridAutoRows="140px"
+        gridAutoRows="130px"
         gap="20px"
       >
         {/* ROW #1 - START */}
@@ -84,7 +83,7 @@ const Dashboard = () => {
             progress="0.50"
             increase="+25%"
             icon={
-              <PoitnOfSaleIcon
+              <PointOfSaleIcon
                 sx={{ color: colors.greenAccent[600], fontSize: "26px" }}
               />
             }
@@ -167,7 +166,7 @@ const Dashboard = () => {
               </IconButton>
             </Box>
           </Box>
-          <Box height="250px" mt="-20px">
+          <Box height="240px" mt="-35px">
             <LineChart isDashboard={true} />
           </Box>
         </Box>
@@ -229,7 +228,7 @@ const Dashboard = () => {
           gridColumn="span 4"
           gridRow="span 2"
           backgroundColor={colors.primary[400]}
-          p="30px"
+          p="20px"
         >
           <Typography variant="h5" fontWeight="600">
             Campaign
@@ -240,7 +239,7 @@ const Dashboard = () => {
             alignItems="center"
             mt="25px"
           >
-            <ProgressCircle size="125" />
+            <ProgressCircle size="110" />
             <Typography
               variant="h5"
               color={colors.greenAccent[500]}
@@ -259,7 +258,7 @@ const Dashboard = () => {
           <Typography
             variant="h5"
             fontWeight="600"
-            sx={{ p: "30px 30px 0 30px" }}
+            sx={{ padding: "30px 30px 0 30px" }}
           >
             Sales Quantity
           </Typography>
@@ -271,7 +270,7 @@ const Dashboard = () => {
           gridColumn="span 4"
           gridRow="span 2"
           backgroundColor={colors.primary[400]}
-          p="30px"
+          padding="30px"
         >
           <Typography variant="h5" fontWeight="600" sx={{ mb: "15px" }}>
             Geography Based Traffic
