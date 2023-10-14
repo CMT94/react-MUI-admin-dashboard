@@ -1,5 +1,6 @@
 import React from "react";
 
+import UserImg from "../../assets/user.png";
 import { Link } from "react-router-dom";
 
 import { Sidebar as ProSidebar, Menu, MenuItem } from "react-pro-sidebar";
@@ -172,7 +173,7 @@ const SideBar = () => {
                   alt="profile-use"
                   width="80px"
                   height="80px"
-                  src={"../../assets/user.png"}
+                  src={UserImg}
                   style={{ cursor: "pointer", borderRadius: "50%" }}
                 />
               </Box>
